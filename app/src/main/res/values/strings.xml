@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Rss Feeder</string>
+    <string name="title_activity_feed">Feeds</string>
+    <string name="title_activity_main">@string/app_name</string>
+    <string name="title_cars">Cars</string>
+    <string name="title_sport_and_culture">Sport and Culture</string>
+    <string name="open">Open</string>
+</resources>
