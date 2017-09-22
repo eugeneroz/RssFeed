@@ -17,7 +17,7 @@ public class CarsFragment extends FeedFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         feedViewModel = ViewModelProviders.of(getActivity()).get(FeedViewModel.class);
-        feedViewModel.carsFeed.observe(this, feed -> {
+        feedViewModel.getFeed(FeedViewModel.CARS_FEED_INDEX).observe(this, feed -> {
             Logger.t(TAG).d("car feed received");
             adapter.setRssChannel(feed.getChannel(), 0);
         });

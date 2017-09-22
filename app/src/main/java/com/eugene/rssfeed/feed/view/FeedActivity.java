@@ -1,9 +1,7 @@
 package com.eugene.rssfeed.feed.view;
 
-import android.app.AlarmManager;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.view.ViewPager;
@@ -27,8 +25,6 @@ public class FeedActivity extends AppCompatActivity {
 
     @BindView(R.id.progress_bar)
     ProgressBar progressBar;
-
-    Handler handler = new Handler();
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -77,22 +73,12 @@ public class FeedActivity extends AppCompatActivity {
         feedViewModel.loadNumberOfRequests.observe(this, integer -> {
             int progressVisibility =  integer == 0 ? View.GONE : View.VISIBLE;
             progressBar.setVisibility(progressVisibility);
-
-            if (progressVisibility == View.GONE) {
-                handler.postDelayed(() -> loadData(), 5000);
-            }
         });
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        loadData();
-    }
-
-    private void loadData() {
-        feedViewModel.getCars();
-        feedViewModel.getCulture();
-        feedViewModel.getSport();
+        feedViewModel.getData();
     }
 }
